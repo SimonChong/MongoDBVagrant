@@ -38,21 +38,22 @@ exec {"mongo-install":
   command => "sudo apt-get install -y mongodb-org",
   cwd => "/vagrant", 
   path    => ["/usr/bin", "/usr/sbin", "/bin"],
-  before => Exec['mongo-start']
+  before => Exec['mongo-check']
 }
 
 # Start MongodDB
-exec {"mongo-start": 
-  command => "sudo service mongod start",
-  cwd => "/vagrant",
-  path    => ["/usr/bin", "/usr/sbin", "/bin"],
-  before => Exec['mongo-check']
-}
+#exec {"mongo-start": 
+#  command => "sudo service mongod start",
+#  cwd => "/vagrant",
+#  path    => ["/usr/bin", "/usr/sbin", "/bin"],
+#  before => Exec['mongo-check']
+#}
 
 # Check MongodDB has started
 exec {"mongo-check": 
   command => "cat /var/log/mongodb/mongod.log",
   cwd => "/vagrant",
-  path    => ["/usr/bin", "/usr/sbin", "/bin"]
+  path    => ["/usr/bin", "/usr/sbin", "/bin"],
+  logoutput => true
 }
 
