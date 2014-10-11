@@ -16,7 +16,7 @@ sudo apt-get update
 
 
 # Install the MongoDB packages.
-figlet "Installing MongodDB"
+figlet "Installing MongoDB"
 sudo apt-get install -y mongodb-org
 
 # Replace config to enable external access to MongoDB
