@@ -65,6 +65,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
 
+
+  
+  config.vm.provision "shell", path: "provision/install_mongo.sh"
+
+
   # Enable provisioning with CFEngine. CFEngine Community packages are
   # automatically installed. For example, configure the host as a
   # policy server and optionally a policy file to run:
@@ -87,10 +92,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the file default.pp in the manifests_path directory.
   #
   
-  config.vm.provision "puppet" do |puppet|
-    puppet.manifests_path = "puppet"
-    puppet.manifest_file  = "provision.pp"
-  end
+  # config.vm.provision "puppet" do |puppet|
+  #  puppet.manifests_path = "puppet"
+  #  puppet.manifest_file  = "provision.pp"
+  # end
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
